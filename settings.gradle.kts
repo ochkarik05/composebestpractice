@@ -16,3 +16,4 @@ dependencyResolutionManagement {
 rootProject.name = "Compose Sample"
 include(":app")
 include(":core:designsystem")
+include(":core:ui")

@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    namespace = "com.chisw.designsystem"
+    namespace = "com.chisw.ui"
     compileSdk = 33
 
     defaultConfig {
@@ -28,12 +28,6 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
-    buildFeatures {
-        compose = true
-    }
-    composeOptions {
-        kotlinCompilerExtensionVersion = "1.4.3"
-    }
 }
 
 dependencies {
@@ -51,7 +45,6 @@ dependencies {
     androidTestImplementation(libs.androidx.test.ext.junit)
     androidTestImplementation(libs.espresso.core)
     androidTestImplementation(libs.ui.test.junit4)
-    androidTestImplementation(libs.truth)
     androidTestImplementation(platform(libs.compose.bom))
 
     debugImplementation(libs.ui.test.manifest)
