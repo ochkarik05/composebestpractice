@@ -359,7 +359,7 @@ naming:
     packagePattern: '[a-z]+(\.[a-z][A-Za-z0-9]*)*'
   TopLevelPropertyNaming:
     active: true
-    constantPattern: '[A-Za-z][A-Za-z0-9]*'
+    constantPattern: '[A-Za-z][_A-Za-z0-9]*'
     propertyPattern: '[A-Za-z][_A-Za-z0-9]*'
     privatePropertyPattern: '_?[A-Za-z][_A-Za-z0-9]*'
   VariableMaxLength:
@@ -638,7 +638,7 @@ style:
   MultilineLambdaItParameter:
     active: false
   MultilineRawStringIndentation:
-    active: false
+    active: true
     indentSize: 4
     trimmingMethods:
       - 'trimIndent'
@@ -935,7 +935,7 @@ formatting:
     autoCorrect: true
     indentSize: 4
   NoTrailingSpaces:
-    active: true
+    active: false
     autoCorrect: true
   NoUnitReturn:
     active: true
@@ -1022,7 +1022,7 @@ formatting:
     autoCorrect: true
     indentSize: 4
   TrailingCommaOnCallSite:
-    active: false
+    active: true
     autoCorrect: true
     useTrailingCommaOnCallSite: true
   TrailingCommaOnDeclarationSite:

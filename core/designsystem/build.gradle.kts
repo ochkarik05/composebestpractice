@@ -34,9 +34,19 @@ android {
     composeOptions {
         kotlinCompilerExtensionVersion = "1.4.3"
     }
+    packaging {
+        resources.excludes.addAll(
+            listOf(
+                "META-INF/LICENSE.md",
+                "META-INF/LICENSE-notice.md",
+            ),
+        )
+    }
 }
 
 dependencies {
+
+    implementation(project(":core:data"))
 
     api(libs.activity.compose)
     api(libs.appcompat)
@@ -52,8 +62,10 @@ dependencies {
 
     androidTestImplementation(libs.androidx.test.ext.junit)
     androidTestImplementation(libs.espresso.core)
-    androidTestImplementation(libs.ui.test.junit4)
+    androidTestImplementation(libs.mockk)
+    androidTestImplementation(libs.mockk.agent)
     androidTestImplementation(libs.truth)
+    androidTestImplementation(libs.ui.test.junit4)
     androidTestImplementation(platform(libs.compose.bom))
 
     debugImplementation(libs.ui.test.manifest)

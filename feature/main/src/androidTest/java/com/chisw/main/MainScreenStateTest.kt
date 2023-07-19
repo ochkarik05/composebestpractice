@@ -10,28 +10,19 @@ import androidx.navigation.compose.composable
 import androidx.navigation.createGraph
 import androidx.navigation.testing.TestNavHostController
 import com.chisw.animation.navigation.animationDemoRoute
-import com.chisw.auth.Auth
 import com.chisw.layouts.navigation.customLayoutDemoRoute
 import com.chisw.navigation.MainScreenDestinations
 import com.chisw.savingstate.navigation.savingStateDemoRoute
 import com.google.common.truth.Truth.assertThat
-import io.mockk.coVerify
-import io.mockk.mockk
-import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.test.TestScope
-import kotlinx.coroutines.test.advanceUntilIdle
-import kotlinx.coroutines.test.runTest
 import org.junit.Rule
 import org.junit.Test
 
-@OptIn(ExperimentalCoroutinesApi::class)
 class MainScreenStateTest {
 
     @get:Rule
     val composeTestRule = createComposeRule()
 
     private lateinit var state: MainScreenState
-    private val scope = TestScope()
 
     @Test
     fun testSetupCorrectly() {
@@ -41,7 +32,7 @@ class MainScreenStateTest {
     @Test
     fun mainScreenState_destinations() {
         composeTestRule.setContent {
-            state = rememberMainAppState(auth = mockk(relaxed = true))
+            state = rememberMainAppState()
         }
         assertThat(state.mainScreenDestinations).hasSize(3)
         assertThat(state.mainScreenDestinations[0]).isEqualTo(MainScreenDestinations.SAVING_STATE_DEMO)
@@ -54,7 +45,7 @@ class MainScreenStateTest {
         var currentDestination: String? = null
         composeTestRule.setContent {
             val navController = rememberTestNavController()
-            state = rememberMainAppState(auth = mockk(relaxed = true), navController = navController)
+            state = rememberMainAppState(navController = navController)
 
             currentDestination = state.currentDestination?.route
 
@@ -64,19 +55,6 @@ class MainScreenStateTest {
         }
 
         assertThat(currentDestination).isEqualTo(animationDemoRoute)
-    }
-
-    @OptIn(ExperimentalCoroutinesApi::class)
-    @Test
-    fun logout_isRedirectedToAuth() = scope.runTest {
-        val auth: Auth = mockk(relaxed = true)
-        composeTestRule.setContent {
-            state = rememberMainAppState(auth = auth, scope = scope)
-        }
-
-        state.logout()
-        advanceUntilIdle()
-        coVerify { auth.logOut() }
     }
 }
 

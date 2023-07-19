@@ -2,6 +2,7 @@
 
 package com.chisw.savingstate.navigation
 
+import androidx.compose.material3.SnackbarDuration
 import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavOptions
@@ -14,7 +15,7 @@ fun NavController.navigateToSavingStateDemo(navOptions: NavOptions? = null) {
     this.navigate(savingStateDemoRoute, navOptions)
 }
 
-fun NavGraphBuilder.savingStateDemoScreen(onShowSnackBar: suspend (String, String) -> Boolean) {
+fun NavGraphBuilder.savingStateDemoScreen(onShowSnackBar: suspend (String, String, SnackbarDuration) -> Boolean) {
     composable(route = savingStateDemoRoute) {
         SavingStateDemoScreen(onShowSnackBar)
     }

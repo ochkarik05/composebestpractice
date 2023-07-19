@@ -52,6 +52,7 @@ dependencies {
     implementation(project(":core:auth"))
     implementation(project(":core:designsystem"))
     implementation(project(":core:ui"))
+    implementation(project(":core:common"))
     implementation(project(":feature:animation"))
     implementation(project(":feature:auth"))
     implementation(project(":feature:layouts"))

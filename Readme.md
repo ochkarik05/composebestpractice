@@ -48,13 +48,15 @@ design team.
 
 The app currently consists of two navigation hierarchies: AppNavigation and MainApp.
 
-![alt_text](/docs/images/navigation.png "App Navigation Scheme")
+![Navigation](/docs/images/navigation.png "App Navigation Scheme")
 
 
 The AppNavigation graph contains a NavHost with two nested navigation graphs - Auth NavGraph and   Main Navigation NavGraph. The Auth class 
 is responsible for selecting the start destination for the AppNavigation graph. If users are not logged in, they are redirected to the 
-auth nav graph. This graph has its own hierarchy with an ability to navigate between Login/Registration/Forgot Password screens
-until the users get logged in. In this case the Auth is indicated that user is logged in and the start destination now is "main". 
+auth nav graph. This graph has its own hierarchy with an ability to navigate between Login/Registration/Forgot Password
+screens
+until the users get logged in. In this case the Auth is indicated that user is logged in and the start destination now
+is "main".
 The auth navigation graph is removed from the hierarchy.
 
 The MainApp screen includes its own internal NavHost, which incorporates a BottomNavigation component and its own
@@ -62,3 +64,33 @@ navigation hierarchy.
 
 In addition, if the user logs out, the main app screen is removed from the stack, and the login screen is displayed
 again.
+
+# Saving State Demo Screen
+
+Saving State Demo screen shows three different approaches of state saving.
+
+As you can see on the video below, there are three cards. Each of them uses its own way to save state.
+
+<div style="text-align:center">
+
+![Saving State Demo Screencast](docs/videos/screen-20230729-190520.mp4)
+
+</div>
+
+The first card, with a counter, does not have any internal state savers. Instead, it only reflects
+current value of counter that comes from view state. The current value of counter is saved persistently
+in a view model. The SavedStateHandle is used for this purpose.
+
+The second card has internal state (expanded/collapsed). To allow this state to survive configuration
+changes it uses `rememberSaveable()` with `autoSaver()`. You can use this approach if you need to save
+something that can be saved in the Bundle.
+
+The third card uses more advanced technic to save its state. It also uses `rememberSaveable()` but this time
+the custom Saver is provided.
+
+For more information, see the following video from an Android Developers Team:
+
+[![Saving State In Android](docs/images/saving_state_android_youtube.png)](https://youtu.be/V-s4z7B_Gnc)
+
+
+

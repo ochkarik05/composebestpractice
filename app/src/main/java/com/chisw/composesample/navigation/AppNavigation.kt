@@ -21,7 +21,7 @@ fun AppNavigation(
     redirectByLogin(isLoggedIn, appAuthScreenState.navController)
     NavHost(navController = appAuthScreenState.navController, startDestination = if (isLoggedIn) "main" else "auth") {
         auth(appAuthScreenState)
-        main(appAuthScreenState.auth)
+        main()
     }
 }
 

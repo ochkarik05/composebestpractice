@@ -5,7 +5,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.SnackbarDuration
 import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.SnackbarResult
@@ -16,7 +15,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavDestination
 import androidx.navigation.NavDestination.Companion.hierarchy
-import com.chisw.auth.Auth
 import com.chisw.designsystem.component.AppNavigationBarItem
 import com.chisw.designsystem.component.BottomNavBar
 import com.chisw.navigation.MainScreenDestinations
@@ -24,8 +22,7 @@ import com.chisw.navigation.MainScreenNavHost
 
 @Composable
 fun MainApp(
-    auth: Auth,
-    appState: MainScreenState = rememberMainAppState(auth)
+    appState: MainScreenState = rememberMainAppState(),
 ) {
     val snackbarHostState = remember { SnackbarHostState() }
 
@@ -34,26 +31,23 @@ fun MainApp(
             ComposeSampleBottomBar(
                 destinations = appState.mainScreenDestinations,
                 onNavigateToDestination = appState::navigateToMainDestination,
-                currentDestination = appState.currentDestination
+                currentDestination = appState.currentDestination,
             )
         },
-        snackbarHost = { SnackbarHost(snackbarHostState) }
+        snackbarHost = { SnackbarHost(snackbarHostState) },
     ) { paddingValues ->
 
         Box(
             Modifier
                 .fillMaxSize()
-                .padding(paddingValues)
+                .padding(paddingValues),
         ) {
-            MainScreenNavHost(appState = appState, onShowSnackBar = { message, action ->
-                val result = snackbarHostState.showSnackbar(
+            MainScreenNavHost(appState = appState, onShowSnackBar = { message, actionLabel, duration ->
+                snackbarHostState.showSnackbar(
                     message = message,
-                    actionLabel = action,
-                    duration = SnackbarDuration.Short,
+                    actionLabel = actionLabel,
+                    duration = duration,
                 ) == SnackbarResult.ActionPerformed
-                result.also {
-                    if (it) appState.logout()
-                }
             })
         }
     }

@@ -43,6 +43,7 @@ material3 = { group = "androidx.compose.material3", name = "material3" }
 mockk = { group = "io.mockk", name = "mockk-android", version.ref = "mockk" }
 mockk-agent = { group = "io.mockk", name = "mockk-agent", version.ref = "mockk" }
 truth = { group = "com.google.truth", name = "truth", version.ref = "truth" }
+timber = "com.jakewharton.timber:timber:5.0.1"
 ui = { group = "androidx.compose.ui", name = "ui" }
 ui-graphics = { group = "androidx.compose.ui", name = "ui-graphics" }
 ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }

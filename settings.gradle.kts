@@ -1,5 +1,8 @@
 @file:Suppress("UnstableApiUsage")
 
+include(":core:common")
+include(":core:data")
+include(":core:domain")
 include(":feature:auth")
 include(":core:auth")
 include(":feature:main")

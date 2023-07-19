@@ -7,7 +7,6 @@ import androidx.compose.ui.test.junit4.AndroidComposeTestRule
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
-import io.mockk.mockk
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -32,7 +31,7 @@ class MainNavigationTest {
     @Before
     fun setUp() {
         composeTestRule.setContent {
-            MainApp(auth = mockk())
+            MainApp()
         }
     }
 

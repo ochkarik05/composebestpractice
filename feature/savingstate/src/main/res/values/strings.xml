@@ -2,5 +2,5 @@
 <resources>
     <string name="saving_state_demo_screen">Saving State Demo Screen</string>
     <string name="saving_state_nav_title">Saving State</string>
-    <string name="logout">Logout</string>
+    <string name="confirm_logout">"Confirm logout: "</string>
 </resources>

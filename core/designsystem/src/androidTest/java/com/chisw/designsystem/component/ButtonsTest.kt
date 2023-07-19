@@ -25,14 +25,13 @@ class ButtonsTest {
 
     @Test
     fun whenButtonHasText_itIsVisible() {
-
         val text = "Button"
         composeTestRule.setContent {
             ChiButton(
                 onClick = {},
                 text = {
                     Text(text)
-                }
+                },
             )
         }
         composeTestRule.onNodeWithText(text).assertIsDisplayed()
@@ -40,13 +39,12 @@ class ButtonsTest {
 
     @Test
     fun chiButton_hasClickActionAssigned() {
-
         val text = "Button"
         composeTestRule.setContent {
             ChiButton(
                 modifier = Modifier.semantics { contentDescription = text },
                 onClick = {},
-                text = {}
+                text = {},
             )
         }
         composeTestRule.onNodeWithContentDescription(text).assertHasClickAction()
@@ -54,17 +52,15 @@ class ButtonsTest {
 
     @Test
     fun when_chiButton_hasLeadingIcon_itIsVisible() {
-
         val text = "Button Image"
         composeTestRule.setContent {
             ChiButton(
                 onClick = {},
                 text = {},
-                leadingIcon = { Icon(Icons.Default.Add, contentDescription = text) }
+                leadingIcon = { Icon(Icons.Default.Add, contentDescription = text) },
             )
         }
         composeTestRule.onRoot(useUnmergedTree = true).printToLog("TAG")
         composeTestRule.onNodeWithContentDescription(text).assertIsDisplayed()
     }
-
 }
