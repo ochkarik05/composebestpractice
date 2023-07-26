@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="login_screen_title">Login Screen</string>
+    <string name="login_button">Login</string>
+    <string name="register_button">Register</string>
+    <string name="forgot_password_button">Forgot Password</string>
+    <string name="forgot_password_screen_title">Forgot Password Screen</string>
+    <string name="back_to_login_button">Back To Login</string>
+    <string name="registration_screen_title">Registration  Screen</string>
+</resources>

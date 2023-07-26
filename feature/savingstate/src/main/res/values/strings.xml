@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="saving_state_demo_screen">Saving State Demo Screen</string>
+    <string name="saving_state_nav_title">Saving State</string>
+    <string name="logout">Logout</string>
+</resources>

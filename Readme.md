@@ -25,7 +25,7 @@ Sometimes it is not the case, so you can try to generate the color palette using
 
 ## 
 
-![alt_text](/docs/images/colors.png "image_tooltip")
+![alt_text](/docs/images/colors.png "Color Palette Image")
 
 
 
@@ -35,9 +35,30 @@ Out-of-the-box material components do not always fit all project needs. Usually 
 
 Take a look at the **core/designsystem/components** to find what custom components are in the current project.
 
-
 ## Other components
 
-You can also be provided with other components like described here: [https://m3.material.io/styles](https://m3.material.io/styles). Among that, you will be provided with such resources as icons, backgrounds, images, etc.
+You can also be provided with other components like described
+here: [https://m3.material.io/styles](https://m3.material.io/styles). Among that, you will be provided with such
+resources as icons, backgrounds, images, etc.
 
-It’s highly recommended to add these components in the same way as you do for Theme/Colors, to be synchronized with your design team.
+It’s highly recommended to add these components in the same way as you do for Theme/Colors, to be synchronized with your
+design team.
+
+# Navigation
+
+The app currently consists of two navigation hierarchies: AppNavigation and MainApp.
+
+![alt_text](/docs/images/navigation.png "App Navigation Scheme")
+
+
+The AppNavigation graph contains a NavHost with two nested navigation graphs - Auth NavGraph and   Main Navigation NavGraph. The Auth class 
+is responsible for selecting the start destination for the AppNavigation graph. If users are not logged in, they are redirected to the 
+auth nav graph. This graph has its own hierarchy with an ability to navigate between Login/Registration/Forgot Password screens
+until the users get logged in. In this case the Auth is indicated that user is logged in and the start destination now is "main". 
+The auth navigation graph is removed from the hierarchy.
+
+The MainApp screen includes its own internal NavHost, which incorporates a BottomNavigation component and its own
+navigation hierarchy.
+
+In addition, if the user logs out, the main app screen is removed from the stack, and the login screen is displayed
+again.
