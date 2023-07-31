@@ -1,3 +1,12 @@
+@file:Suppress("UnstableApiUsage")
+
+include(":core:common")
+include(":core:data")
+include(":core:domain")
+include(":feature:auth")
+include(":core:auth")
+include(":feature:main")
+
 pluginManagement {
     repositories {
         google()
@@ -17,3 +26,6 @@ rootProject.name = "Compose Sample"
 include(":app")
 include(":core:designsystem")
 include(":core:ui")
+include(":feature:savingstate")
+include(":feature:animation")
+include(":feature:layouts")

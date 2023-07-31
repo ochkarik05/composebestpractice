@@ -34,24 +34,38 @@ android {
     composeOptions {
         kotlinCompilerExtensionVersion = "1.4.3"
     }
+    packaging {
+        resources.excludes.addAll(
+            listOf(
+                "META-INF/LICENSE.md",
+                "META-INF/LICENSE-notice.md",
+            ),
+        )
+    }
 }
 
 dependencies {
 
-    implementation(libs.activity.compose)
-    implementation(libs.appcompat)
-    implementation(libs.core.ktx)
-    implementation(libs.lifecycle.runtime.ktx)
-    implementation(libs.material3)
-    implementation(libs.ui)
-    implementation(libs.ui.graphics)
-    implementation(libs.ui.tooling.preview)
-    implementation(platform(libs.compose.bom))
+    implementation(project(":core:data"))
+
+    api(libs.activity.compose)
+    api(libs.appcompat)
+    api(libs.core.ktx)
+    api(libs.lifecycle.runtime.ktx)
+    api(libs.ui)
+    api(libs.ui.graphics)
+    api(libs.ui.tooling.preview)
+    api(libs.androidx.navigation.compose)
+    api(platform(libs.compose.bom))
+    api(libs.material3)
+    api(libs.androidx.compose.material.iconsExtended)
 
     androidTestImplementation(libs.androidx.test.ext.junit)
     androidTestImplementation(libs.espresso.core)
-    androidTestImplementation(libs.ui.test.junit4)
+    androidTestImplementation(libs.mockk)
+    androidTestImplementation(libs.mockk.agent)
     androidTestImplementation(libs.truth)
+    androidTestImplementation(libs.ui.test.junit4)
     androidTestImplementation(platform(libs.compose.bom))
 
     debugImplementation(libs.ui.test.manifest)

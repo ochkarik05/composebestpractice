@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="animation_demo_screen">Animation Demo Screen</string>
+    <string name="animation_nav_title">Animation</string>
+    <string name="let_it_snow">Let It Snow</string>
+    <string name="spring_demo_title">Demo of spring animation with different parameters</string>
+    <string name="sping_default">Spring with default parameters</string>
+    <string name="spring_damping_hi_stiffness_medium">Spring with dampingRatio = DampingRatioHighBouncy and stiffness = StiffnessMedium</string>
+    <string name="spring_damping_hi_stiffness_very_low">Spring with dampingRatio = DampingRatioHighBouncy and stiffness = StiffnessVeryLow</string>
+    <string name="press_to_animate">Press to animate</string>
+    <string name="keyframe_animation">Keyframe animation example</string>
+    <string name="vector_drawable_title">This is a vector drawable animation demo. Click on image to animate it</string>
+</resources>

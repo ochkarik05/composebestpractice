@@ -49,24 +49,25 @@ android {
 
 dependencies {
 
+    implementation(project(":core:auth"))
     implementation(project(":core:designsystem"))
     implementation(project(":core:ui"))
+    implementation(project(":core:common"))
+    implementation(project(":feature:animation"))
+    implementation(project(":feature:auth"))
+    implementation(project(":feature:layouts"))
+    implementation(project(":feature:main"))
+    implementation(project(":feature:savingstate"))
 
-    implementation(libs.core.ktx)
-    implementation(libs.lifecycle.runtime.ktx)
-    implementation(libs.activity.compose)
-    implementation(platform(libs.compose.bom))
-    implementation(libs.ui)
-    implementation(libs.ui.graphics)
-    implementation(libs.ui.tooling.preview)
-    implementation(libs.material3)
+    implementation(libs.androidx.navigation.compose)
 
     testImplementation(libs.junit)
-
+    androidTestImplementation(libs.androidx.navigation.testing)
     androidTestImplementation(libs.androidx.test.ext.junit)
     androidTestImplementation(libs.espresso.core)
-    androidTestImplementation(platform(libs.compose.bom))
+    androidTestImplementation(libs.truth)
     androidTestImplementation(libs.ui.test.junit4)
+    androidTestImplementation(platform(libs.compose.bom))
 
     debugImplementation(libs.ui.tooling)
     debugImplementation(libs.ui.test.manifest)

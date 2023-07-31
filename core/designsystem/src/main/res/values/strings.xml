@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="counter_view_title">This is a counter. It does not save its own state. For making it to survive configuration changes, we provide our own solution. The counter state hoisted to the SavingStateDemoViewState and is saved in the SavingSateDemoViewModel using SavedStateHandle mechanism</string>
+    <string name="date_time_view_title">The view below is clickable. Click here to expand or collapse. This view saves expanded or collapsed state internally. This state survives configuration changes</string>
+    <string name="profile_view_title">This view uses the more advanced technic for saving state. It provides its own state together with custom Saver.</string>
+    <string name="save">Save</string>
+    <string name="firstname">Firstname</string>
+    <string name="lastname">Lastname</string>
+    <string name="logout">Logout</string>
+</resources>
