@@ -12,6 +12,6 @@ fun ChiHeader(text: String, modifier: Modifier = Modifier) {
         text = text,
         modifier = modifier,
         style = MaterialTheme.typography.headlineMedium,
-        textAlign = TextAlign.Center
+        textAlign = TextAlign.Center,
     )
 }

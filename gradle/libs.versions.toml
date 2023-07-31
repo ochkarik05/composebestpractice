@@ -21,6 +21,7 @@ navigationVersion = "2.6.0"
 
 [libraries]
 activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activity-compose" }
+androidx-animation-graphics = { group = "androidx.compose.animation", name = "animation-graphics", version = "1.4.3" }
 androidx-compose-material-iconsExtended = { group = "androidx.compose.material", name = "material-icons-extended" }
 androidx-navigation-common-ktx = { group = "androidx.navigation", name = "navigation-common-ktx", version = "2.6.0" }
 androidx-navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version = "2.6.0" }
@@ -29,6 +30,7 @@ androidx-navigation-testing = { group = "androidx.navigation", name = "navigatio
 androidx-test-ext-junit = { group = "androidx.test.ext", name = "junit", version.ref = "androidx-test-ext-junit" }
 appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
 compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "compose-bom" }
+compose-ui-util = { group = "androidx.compose.ui", name = "ui-util" }
 core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "core-ktx" }
 detekt-formatting = "io.gitlab.arturbosch.detekt:detekt-formatting:1.23.0"
 espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espresso-core" }
@@ -42,8 +44,8 @@ material = { group = "com.google.android.material", name = "material", version.r
 material3 = { group = "androidx.compose.material3", name = "material3" }
 mockk = { group = "io.mockk", name = "mockk-android", version.ref = "mockk" }
 mockk-agent = { group = "io.mockk", name = "mockk-agent", version.ref = "mockk" }
-truth = { group = "com.google.truth", name = "truth", version.ref = "truth" }
 timber = "com.jakewharton.timber:timber:5.0.1"
+truth = { group = "com.google.truth", name = "truth", version.ref = "truth" }
 ui = { group = "androidx.compose.ui", name = "ui" }
 ui-graphics = { group = "androidx.compose.ui", name = "ui-graphics" }
 ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }

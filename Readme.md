@@ -92,5 +92,20 @@ For more information, see the following video from an Android Developers Team:
 
 [![Saving State In Android](docs/images/saving_state_android_youtube.png)](https://youtu.be/V-s4z7B_Gnc)
 
+# Animation Screen
 
+Animation screen contains HorizontalPager with cards and every card presents different
+animation type.
 
+There are the following animation types for now:
+
+- Spring/keyframe animation example
+- Vector Drawable animation example
+- Custom animation example (Snowflakes)
+
+There is also an example how you can use AGSL shaders in Jetpack Compose. The shader applies
+to the ViewPager's page when it starts scrolling, and it makes pages black and white
+
+# Custom Layout Screen
+
+_In progress_
