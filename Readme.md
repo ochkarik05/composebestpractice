@@ -1,111 +1,76 @@
-# Project description
+# Compose Best Practice
 
-A demo project that shows the basic principles of building modern applications on the MVI architecture with Compose-Based UI
+The **MVI Architecture with Compose-Based UI Demo** is a comprehensive showcase of modern application development
+principles. It focuses on the Model-View-Intent (MVI) architecture with Jetpack Compose for building reactive user
+interfaces.
 
+## Theming
 
-# Theming
+Theming is a crucial aspect of every project's design. To ensure synchronization with the design team, the project
+adopts the Material 3 library. The design system, created with Material 3 Kit, is integrated into the project as the
+"designsystem" module under the "core" folder.
 
-Every  project usually starts from design.
+### Colors
 
-Well-structured design usually contains all the necessary elements inside. As modern projects on Android typically are  built over the [Material 3 library](https://m3.material.io/), the design team usually starts with [Material 3 Kit ](https://www.figma.com/community/file/1035203688168086460/Material-3-Design-Kit)and provides the full design system per project. Usually we are provided with the design system that was built specifically for the project.
+The project's color palette is derived from the design team's work in Figma or can be generated using
+the [Material 3 Theme Builder](https://m3.material.io/theme-builder#/custom) tool.
 
-So, to be synchronized with your design team, it’s usually a good idea to create the same component set in the project.
+![Color Palette](/docs/images/colors.png "Color Palette Image")
 
-Current project contains the whole design system in its own module, named “**designsystem**”. This module lays together with other modules under the “**core**” folder.
+### Components
 
+To meet the project's specific requirements, custom components are created based on the design system. These components
+are found under **core/designsystem/components**.
 
-## Colors
+## Navigation
 
-If the design team uses the right tools, all that you need to get it in the code is just export the colors from Figma design directly to the project.
+The application consists of two navigation hierarchies: AppNavigation and MainApp.
 
-Sometimes it is not the case, so you can try to generate the color palette using this tool:
+![App Navigation](/docs/images/navigation.png "App Navigation Scheme")
 
-[https://m3.material.io/theme-builder#/custom](https://m3.material.io/theme-builder#/custom). For current project this tool was used with base colors were taken directly from the site: [https://chisw.com/](https://chisw.com/)
+1. **AppNavigation**: This graph contains a NavHost with two nested navigation graphs - Auth NavGraph and Main
+   Navigation NavGraph. The Auth class manages the start destination selection. If users are not logged in, they are
+   redirected to the auth nav graph for actions like Login, Registration, or Forgot Password. Once logged in, the start
+   destination changes to "main," and the auth navigation graph is removed from the hierarchy.
 
+2. **MainApp**: This screen includes its own internal NavHost, which incorporates a BottomNavigation component and its
+   navigation hierarchy. If the user logs out, the main app screen is removed from the stack, and the login screen is
+   displayed again.
 
-## 
+## Saving State Demo Screen
 
-![alt_text](/docs/images/colors.png "Color Palette Image")
+The Saving State Demo screen showcases three different state-saving approaches:
 
+![Saving State](/docs/images/saving_state_1.png "Saving State Screenshot")
+![Saving State](/docs/images/saving_state_2.png "Saving State Screenshot")
 
+1. The first card, with a counter, does not have any internal state savers. Instead, it reflects the current value of
+   the counter from the view state. The current counter value is persistently saved in a view model using the
+   SavedStateHandle.
 
-## Components
+2. The second card has internal state (expanded/collapsed) and uses `rememberSaveable()` with `autoSaver()` to persist
+   this state through configuration changes.
 
-Out-of-the-box material components do not always fit all project needs. Usually the design team creates a set of custom components in Figma, and these components are used across the project.
+3. The third card employs a more advanced technique to save its state using a custom Saver along
+   with `rememberSaveable()`.
 
-Take a look at the **core/designsystem/components** to find what custom components are in the current project.
+For further details, refer to the following video from the Android Developers
+Team: [Saving State In Android](https://youtu.be/V-s4z7B_Gnc).
 
-## Other components
+## Animation Screen
 
-You can also be provided with other components like described
-here: [https://m3.material.io/styles](https://m3.material.io/styles). Among that, you will be provided with such
-resources as icons, backgrounds, images, etc.
-
-It’s highly recommended to add these components in the same way as you do for Theme/Colors, to be synchronized with your
-design team.
-
-# Navigation
-
-The app currently consists of two navigation hierarchies: AppNavigation and MainApp.
-
-![Navigation](/docs/images/navigation.png "App Navigation Scheme")
-
-
-The AppNavigation graph contains a NavHost with two nested navigation graphs - Auth NavGraph and   Main Navigation NavGraph. The Auth class 
-is responsible for selecting the start destination for the AppNavigation graph. If users are not logged in, they are redirected to the 
-auth nav graph. This graph has its own hierarchy with an ability to navigate between Login/Registration/Forgot Password
-screens
-until the users get logged in. In this case the Auth is indicated that user is logged in and the start destination now
-is "main".
-The auth navigation graph is removed from the hierarchy.
-
-The MainApp screen includes its own internal NavHost, which incorporates a BottomNavigation component and its own
-navigation hierarchy.
-
-In addition, if the user logs out, the main app screen is removed from the stack, and the login screen is displayed
-again.
-
-# Saving State Demo Screen
-
-Saving State Demo screen shows three different approaches of state saving.
-
-As you can see on the video below, there are three cards. Each of them uses its own way to save state.
-
-<div style="text-align:center">
-
-![Saving State Demo Screencast](docs/videos/screen-20230729-190520.mp4)
-
-</div>
-
-The first card, with a counter, does not have any internal state savers. Instead, it only reflects
-current value of counter that comes from view state. The current value of counter is saved persistently
-in a view model. The SavedStateHandle is used for this purpose.
-
-The second card has internal state (expanded/collapsed). To allow this state to survive configuration
-changes it uses `rememberSaveable()` with `autoSaver()`. You can use this approach if you need to save
-something that can be saved in the Bundle.
-
-The third card uses more advanced technic to save its state. It also uses `rememberSaveable()` but this time
-the custom Saver is provided.
-
-For more information, see the following video from an Android Developers Team:
-
-[![Saving State In Android](docs/images/saving_state_android_youtube.png)](https://youtu.be/V-s4z7B_Gnc)
-
-# Animation Screen
-
-Animation screen contains HorizontalPager with cards and every card presents different
-animation type.
-
-There are the following animation types for now:
+The Animation screen showcases a HorizontalPager with different types of animations on each card:
 
 - Spring/keyframe animation example
 - Vector Drawable animation example
 - Custom animation example (Snowflakes)
 
-There is also an example how you can use AGSL shaders in Jetpack Compose. The shader applies
-to the ViewPager's page when it starts scrolling, and it makes pages black and white
+Additionally, the screen demonstrates the usage of AGSL shaders in Jetpack Compose. The shader applies to the
+ViewPager's page while scrolling, rendering the pages in black and white.
 
-# Custom Layout Screen
+## Custom Layout Screen
 
-_In progress_
+_This section is currently in progress._
+
+Thank you for exploring the MVI Architecture with Compose-Based UI Demo project. We hope you find it instructive and
+inspiring for your own application development endeavors. Happy coding!
