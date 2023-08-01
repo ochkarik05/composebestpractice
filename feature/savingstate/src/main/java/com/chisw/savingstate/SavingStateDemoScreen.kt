@@ -25,8 +25,8 @@ import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import androidx.lifecycle.viewmodel.compose.viewModel
 import com.chisw.data.model.Profile
 import com.chisw.designsystem.component.ChiHeader
 import com.chisw.designsystem.component.Counter
@@ -40,9 +40,7 @@ const val SAVING_STATE_DEMO_SCREEN_TAG = "saving_state_demo_screen_tag"
 
 @Composable
 fun SavingStateDemoScreen(onShowSnackBar: suspend (String, String, SnackbarDuration) -> Boolean) {
-    val viewModel: SavingStateDemoViewModel = viewModel(
-        factory = SavingStateDemoViewModelFactory(),
-    )
+    val viewModel: SavingStateDemoViewModel = hiltViewModel()
     SavingStateDemoScreen(viewModel, onShowSnackBar)
 }
 

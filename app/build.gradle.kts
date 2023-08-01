@@ -1,7 +1,9 @@
 @Suppress("DSL_SCOPE_VIOLATION")
 plugins {
     alias(libs.plugins.com.android.application)
+    alias(libs.plugins.hilt.android)
     alias(libs.plugins.org.jetbrains.kotlin.android)
+    kotlin("kapt")
 }
 
 android {
@@ -47,6 +49,10 @@ android {
     }
 }
 
+kapt {
+    correctErrorTypes = true
+}
+
 dependencies {
 
     implementation(project(":core:auth"))
@@ -60,6 +66,9 @@ dependencies {
     implementation(project(":feature:savingstate"))
 
     implementation(libs.androidx.navigation.compose)
+    implementation(libs.hilt.android)
+
+    kapt(libs.hilt.android.compiler)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.navigation.testing)

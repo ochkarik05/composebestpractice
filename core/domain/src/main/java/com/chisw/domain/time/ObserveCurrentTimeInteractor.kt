@@ -5,6 +5,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.map
 import java.util.concurrent.TimeUnit
+import javax.inject.Inject
 
 private const val TIME_INTERVAL_SEC = 1L
 
@@ -12,11 +13,12 @@ fun interface CurrentTimeFormatter {
     fun formatTime(ms: Long): String
 }
 
-class ObserveCurrentTimeInteractor {
+class ObserveCurrentTimeInteractor @Inject constructor() {
 
     class Params(
-        val formatter: CurrentTimeFormatter
+        val formatter: CurrentTimeFormatter,
     )
+
     operator fun invoke(params: Params): Flow<String> = currentTimeFlow().map {
         params.formatter.formatTime(it)
     }
