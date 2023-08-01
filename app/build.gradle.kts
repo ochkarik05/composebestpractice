@@ -1,7 +1,9 @@
 @Suppress("DSL_SCOPE_VIOLATION")
 plugins {
     alias(libs.plugins.com.android.application)
+    alias(libs.plugins.hilt.android)
     alias(libs.plugins.org.jetbrains.kotlin.android)
+    kotlin("kapt")
 }
 
 android {
@@ -12,8 +14,8 @@ android {
         applicationId = "com.chisw.composesample"
         minSdk = 28
         targetSdk = 33
-        versionCode = 1
-        versionName = "0.0.2"
+        versionCode = 3
+        versionName = "0.0.$versionCode"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
@@ -38,13 +40,17 @@ android {
         compose = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.4.3"
+        kotlinCompilerExtensionVersion = libs.versions.kotlin.compiler.get()
     }
     packaging {
         resources {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
     }
+}
+
+kapt {
+    correctErrorTypes = true
 }
 
 dependencies {
@@ -60,6 +66,9 @@ dependencies {
     implementation(project(":feature:savingstate"))
 
     implementation(libs.androidx.navigation.compose)
+    implementation(libs.hilt.android)
+
+    kapt(libs.hilt.android.compiler)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.navigation.testing)

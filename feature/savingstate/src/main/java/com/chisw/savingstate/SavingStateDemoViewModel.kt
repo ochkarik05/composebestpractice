@@ -13,6 +13,9 @@ import com.chisw.domain.profile.SaveProfileInteractor
 import com.chisw.domain.time.ObserveCurrentTimeInteractor
 import com.chisw.domain.utils.InvokeError
 import com.chisw.domain.utils.Loader
+import com.chisw.savingstate.di.DATE_FORMATTER
+import com.chisw.savingstate.di.TIME_FORMATTER
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.onEach
@@ -20,15 +23,16 @@ import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.Date
-import java.util.Locale
+import javax.inject.Inject
+import javax.inject.Named
 
 const val INITIAL_STEP = 0
 
 sealed interface SavingStateEvent {
-    object Logout : SavingStateEvent
-    object Increment : SavingStateEvent
-    object Decrement : SavingStateEvent
-    object ClearErrors : SavingStateEvent
+    data object Logout : SavingStateEvent
+    data object Increment : SavingStateEvent
+    data object Decrement : SavingStateEvent
+    data object ClearErrors : SavingStateEvent
     class SaveProfile(val profile: Profile) : SavingStateEvent
 }
 
@@ -43,20 +47,19 @@ data class SavingStateDemoViewState(
     val eventSink: (SavingStateEvent) -> Unit,
 )
 
-private const val TIME_FORMAT = "HH:mm:ss"
-private const val DATE_FORMAT = "EEE, d MMM yyyy"
-
 internal const val CURRENT_STEP = "currentStep"
 
-class SavingStateDemoViewModel(
+@HiltViewModel
+@Suppress("LongParameterList")
+class SavingStateDemoViewModel @Inject constructor(
     private val savedStateHandle: SavedStateHandle,
     currentTimeInteractor: ObserveCurrentTimeInteractor,
     logoutInteractor: LogoutInteractor,
     saveProfileInteractor: SaveProfileInteractor,
     observeProfileInteractor: ObserveProfileInteractor,
     logger: Logger,
-    private val timeFormatter: SimpleDateFormat = SimpleDateFormat(TIME_FORMAT, Locale.getDefault()),
-    private val dateFormatter: SimpleDateFormat = SimpleDateFormat(DATE_FORMAT, Locale.getDefault()),
+    @Named(DATE_FORMATTER) private val timeFormatter: SimpleDateFormat,
+    @Named(TIME_FORMATTER) private val dateFormatter: SimpleDateFormat,
 ) : ViewModel() {
 
     private val loadingState by lazy { Loader(viewModelScope, logger) }

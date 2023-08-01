@@ -1,36 +1,42 @@
-package com.chisw.main
+package com.chisw.composesample.navigation
 
-import androidx.activity.ComponentActivity
+import androidx.activity.compose.setContent
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.assertIsSelected
 import androidx.compose.ui.test.junit4.AndroidComposeTestRule
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
+import com.chisw.animation.R
+import com.chisw.composesample.MainActivity
+import com.chisw.main.MainApp
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import kotlin.properties.ReadOnlyProperty
-import com.chisw.animation.R as animationR
-import com.chisw.layouts.R as layoutsR
-import com.chisw.savingstate.R as savingStateR
 
 class MainNavigationTest {
 
     @get:Rule
-    val composeTestRule = createAndroidComposeRule<ComponentActivity>()
+    val composeTestRule = createAndroidComposeRule<MainActivity>()
 
-    private val animationNavItem by composeTestRule.stringResource(animationR.string.animation_nav_title)
-    private val customLayoutNavItem by composeTestRule.stringResource(layoutsR.string.layout_nav_title)
-    private val savingStateNavItem by composeTestRule.stringResource(savingStateR.string.saving_state_nav_title)
+    private val animationNavItem by composeTestRule.stringResource(R.string.animation_nav_title)
+    private val customLayoutNavItem by composeTestRule.stringResource(com.chisw.layouts.R.string.layout_nav_title)
+    private val savingStateNavItem by composeTestRule.stringResource(
+        com.chisw.savingstate.R.string.saving_state_nav_title,
+    )
 
-    private val animationScreen by composeTestRule.stringResource(animationR.string.animation_demo_screen)
-    private val customLayoutScreen by composeTestRule.stringResource(layoutsR.string.custom_layout_demo_screen)
-    private val savingStateScreen by composeTestRule.stringResource(savingStateR.string.saving_state_demo_screen)
+    private val animationScreen by composeTestRule.stringResource(R.string.animation_demo_screen)
+    private val customLayoutScreen by composeTestRule.stringResource(
+        com.chisw.layouts.R.string.custom_layout_demo_screen,
+    )
+    private val savingStateScreen by composeTestRule.stringResource(
+        com.chisw.savingstate.R.string.saving_state_demo_screen,
+    )
 
     @Before
     fun setUp() {
-        composeTestRule.setContent {
+        composeTestRule.activity.setContent {
             MainApp()
         }
     }

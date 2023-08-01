@@ -4,7 +4,9 @@ import android.annotation.SuppressLint
 import android.util.Log
 import timber.log.Timber
 import java.util.regex.Pattern
+import javax.inject.Inject
 
+@Suppress("TooManyFunctions")
 interface Logger {
 
     /** Log a verbose message with optional format args.  */
@@ -62,7 +64,8 @@ interface Logger {
     fun wtf(t: Throwable)
 }
 
-class AppLogger : Logger {
+@Suppress("TooManyFunctions")
+class AppLogger @Inject constructor() : Logger {
 
     fun setup(debugMode: Boolean) {
         if (debugMode) {
@@ -150,8 +153,6 @@ class AppLogger : Logger {
     }
 }
 
-val defaultLogger: Logger by lazy { AppLogger() }
-
 /**
  * Special version of [Timber.DebugTree] which is tailored for Timber being wrapped
  * within another class.
@@ -163,10 +164,8 @@ private class AppDebugTree : Timber.DebugTree() {
     }
 
     private fun createClassTag(): String {
-        val stackTrace = Throwable().stackTrace
-        if (stackTrace.size <= CALL_STACK_INDEX) {
-            throw IllegalStateException("Synthetic stacktrace didn't have enough elements: are you using proguard?")
-        }
+        val stackTrace = Throwable("").stackTrace
+        check(stackTrace.size > CALL_STACK_INDEX)
         var tag = stackTrace[CALL_STACK_INDEX].className
 
         if (tag.contains("Logger\$DefaultImpls")) {

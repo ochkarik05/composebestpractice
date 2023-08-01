@@ -2,7 +2,6 @@ package com.chisw.domain.profile
 
 import com.chisw.data.model.Profile
 import com.chisw.data.repository.ProfileRepository
-import com.chisw.data.repository.ProfileRepositoryImpl
 import com.chisw.domain.utils.AppCoroutineDispatchers
 import com.chisw.domain.utils.InvokeError
 import com.chisw.domain.utils.InvokeStarted
@@ -12,13 +11,12 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.withContext
 import java.io.IOException
+import javax.inject.Inject
 
-class SaveProfileInteractor(
+class SaveProfileInteractor @Inject constructor(
     private val repository: ProfileRepository,
     private val dispatchers: AppCoroutineDispatchers,
 ) {
-
-    constructor() : this(ProfileRepositoryImpl, AppCoroutineDispatchers())
 
     class Params(
         val profile: Profile,

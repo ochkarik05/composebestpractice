@@ -1,7 +1,9 @@
 @Suppress("DSL_SCOPE_VIOLATION")
 plugins {
     alias(libs.plugins.com.android.library)
+    alias(libs.plugins.hilt.android)
     alias(libs.plugins.org.jetbrains.kotlin.android)
+    kotlin("kapt")
 }
 
 android {
@@ -33,7 +35,10 @@ android {
 dependencies {
 
     implementation(libs.core.ktx)
+    implementation(libs.hilt.android)
     implementation(libs.kotlin.coroutines.core)
+
+    kapt(libs.hilt.android.compiler)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.test.ext.junit)
