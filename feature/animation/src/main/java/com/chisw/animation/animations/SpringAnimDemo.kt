@@ -40,7 +40,7 @@ import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
 import com.chisw.animation.R
 import com.chisw.designsystem.component.ChiButton
-import com.chisw.designsystem.component.ThemedPreview
+import com.chisw.designsystem.component.Themed3Preview
 
 private enum class BallPosition {
     START,
@@ -203,7 +203,7 @@ private fun StartAnimationButton(
 @Preview
 @Composable
 private fun Preview() {
-    ThemedPreview {
+    Themed3Preview {
         SpringAnimDemo()
     }
 }

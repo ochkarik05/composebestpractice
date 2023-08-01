@@ -25,7 +25,7 @@ import androidx.compose.ui.unit.dp
 import com.chisw.animation.R
 import com.chisw.animation.modifiers.SnowFallType
 import com.chisw.animation.modifiers.snowfall
-import com.chisw.designsystem.component.ThemedPreview
+import com.chisw.designsystem.component.Themed3Preview
 
 @Composable
 fun LetItSnow(modifier: Modifier = Modifier) {
@@ -70,7 +70,7 @@ fun LetItSnow(modifier: Modifier = Modifier) {
 @Preview
 @Composable
 private fun Preview() {
-    ThemedPreview {
+    Themed3Preview {
         LetItSnow()
     }
 }

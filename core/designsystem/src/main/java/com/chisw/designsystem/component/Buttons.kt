@@ -82,7 +82,7 @@ fun ChiOutlinedButton(
         modifier = modifier,
         enabled = enabled,
         colors = ButtonDefaults.outlinedButtonColors(
-            contentColor = MaterialTheme.colorScheme.tertiary
+            contentColor = MaterialTheme.colorScheme.tertiary,
         ),
         border = BorderStroke(
             width = 2.dp,
@@ -90,7 +90,7 @@ fun ChiOutlinedButton(
                 MaterialTheme.colorScheme.tertiary
             } else {
                 MaterialTheme.colorScheme.tertiary.copy(
-                    alpha = 0.4f
+                    alpha = 0.4f,
                 )
             },
         ),
@@ -152,12 +152,12 @@ private fun ChiButtonContent(
 @Preview(uiMode = UI_MODE_NIGHT_NO, showBackground = true, backgroundColor = 0xffffffff)
 @Composable
 private fun Preview() {
-    ThemedPreview {
+    Themed3Preview {
         Box(Modifier.padding(16.dp)) {
             ChiButton(
                 onClick = {},
                 text = { Text("Button") },
-                leadingIcon = { Icon(Icons.Default.Add, contentDescription = null) }
+                leadingIcon = { Icon(Icons.Default.Add, contentDescription = null) },
             )
         }
     }
@@ -167,7 +167,7 @@ private fun Preview() {
 @Preview(uiMode = UI_MODE_NIGHT_NO, showBackground = true, backgroundColor = 0xffffffff)
 @Composable
 private fun PreviewNoIcon() {
-    ThemedPreview {
+    Themed3Preview {
         Box(Modifier.padding(16.dp)) {
             ChiButton(
                 onClick = {},
@@ -181,7 +181,7 @@ private fun PreviewNoIcon() {
 @Preview(uiMode = UI_MODE_NIGHT_NO, showBackground = true, backgroundColor = 0xffffffff)
 @Composable
 private fun PreviewOutlinedNoIcon() {
-    ThemedPreview {
+    Themed3Preview {
         Box(Modifier.padding(16.dp)) {
             ChiOutlinedButton(
                 onClick = {},

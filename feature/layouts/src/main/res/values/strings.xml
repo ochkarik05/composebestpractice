@@ -2,4 +2,6 @@
 <resources>
     <string name="custom_layout_demo_screen">Custom Layout Demo Screen</string>
     <string name="layout_nav_title">Layout</string>
+    <string name="collage_layout_card">This is a custom Collage Layout. Items are placed one after another but with some random factor</string>
+    <string name="radial_layout_card">This is a custom RadialLayout. Items are placed radially. Also, all items are rotating around the center</string>
 </resources>
