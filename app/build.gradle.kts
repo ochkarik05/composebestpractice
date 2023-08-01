@@ -14,8 +14,8 @@ android {
         applicationId = "com.chisw.composesample"
         minSdk = 28
         targetSdk = 33
-        versionCode = 1
-        versionName = "0.0.2"
+        versionCode = 3
+        versionName = "0.0.$versionCode"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
