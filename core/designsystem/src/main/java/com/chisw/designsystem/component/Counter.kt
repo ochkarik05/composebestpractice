@@ -48,7 +48,7 @@ fun Counter(value: Int, onIncrement: () -> Unit, onDecrement: () -> Unit, modifi
 @Preview
 @Composable
 private fun Preview() {
-    ThemedPreview {
+    Themed3Preview {
         Counter(value = 10, onIncrement = {}, onDecrement = {})
     }
 }

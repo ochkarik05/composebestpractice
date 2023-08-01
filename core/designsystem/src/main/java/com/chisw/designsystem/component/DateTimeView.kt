@@ -65,7 +65,7 @@ fun DateTimeView(
 @Preview
 @Composable
 private fun Preview(@PreviewParameter(SampleBooleanProvider::class) showDate: Boolean) {
-    ThemedPreview {
+    Themed3Preview {
         DateTimeView(
             date = "July, 22, 2032",
             time = "07:00",

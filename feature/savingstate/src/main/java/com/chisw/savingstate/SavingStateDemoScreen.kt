@@ -32,7 +32,7 @@ import com.chisw.designsystem.component.ChiHeader
 import com.chisw.designsystem.component.Counter
 import com.chisw.designsystem.component.DateTimeView
 import com.chisw.designsystem.component.ProfileView
-import com.chisw.designsystem.component.ThemedPreview
+import com.chisw.designsystem.component.Themed3Preview
 import kotlinx.coroutines.launch
 
 @VisibleForTesting
@@ -172,7 +172,7 @@ private fun SavingStateDemoScreen(
 @Preview(name = "Dark Mode", uiMode = Configuration.UI_MODE_NIGHT_YES, showBackground = true)
 @Composable
 private fun Preview() {
-    ThemedPreview {
+    Themed3Preview {
         SavingStateDemoScreen(
             state = SavingStateDemoViewState(0, "8:00", "Wed, 4 Jul 2001") {},
             {},

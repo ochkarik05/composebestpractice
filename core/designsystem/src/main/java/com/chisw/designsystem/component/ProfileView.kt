@@ -192,7 +192,7 @@ fun ProfileEditor(
 @Preview
 @Composable
 private fun Preview() {
-    ThemedPreview {
+    Themed3Preview {
         ProfileView(
             initialProfile = Profile("James", "Bond"),
             isLoading = true,

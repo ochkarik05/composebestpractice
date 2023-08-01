@@ -14,7 +14,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.chisw.designsystem.component.ChiHeader
-import com.chisw.designsystem.component.ThemedPreview
+import com.chisw.designsystem.component.Themed3Preview
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
@@ -45,7 +45,7 @@ fun AnimationDemoScreen() {
 @Preview
 @Composable
 private fun Preview() {
-    ThemedPreview {
+    Themed3Preview {
         AnimationDemoScreen()
     }
 }
