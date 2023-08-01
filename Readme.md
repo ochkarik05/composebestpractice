@@ -4,6 +4,24 @@ The **MVI Architecture with Compose-Based UI Demo** is a comprehensive showcase 
 principles. It focuses on the Model-View-Intent (MVI) architecture with Jetpack Compose for building reactive user
 interfaces.
 
+## Dependency Injection
+
+The project tires to follow best practices of using
+DI [ Dependency Injection ](https://en.wikipedia.org/wiki/Dependency_injection),
+IoC [ Inversion of control ](https://en.wikipedia.org/wiki/Inversion_of_control),
+DIP [ Dependency Inversion Principle ](https://en.wikipedia.org/wiki/Dependency_inversion_principle)
+There is a good explanation what all of these definitions are, how they are connected and how they differ from each
+other:
+https://stackoverflow.com/a/46745172
+
+In the project [Hilt](https://developer.android.com/training/dependency-injection/hilt-android)  is used as a DI
+framework.
+The decision to choose Hilt was made mainly because it uses static compile-time approach to generate the code.
+
+[ See this PR ]( https://github.com/ochkarik05/composebestpractice/pull/1) to understand how Hilt reduces boilerplate
+code.
+Take a look how SavingStateDemoViewModel were created before this PR using a custom factory.
+
 ## Theming
 
 Theming is a crucial aspect of every project's design. To ensure synchronization with the design team, the project
@@ -74,3 +92,4 @@ _This section is currently in progress._
 
 Thank you for exploring the MVI Architecture with Compose-Based UI Demo project. We hope you find it instructive and
 inspiring for your own application development endeavors. Happy coding!
+

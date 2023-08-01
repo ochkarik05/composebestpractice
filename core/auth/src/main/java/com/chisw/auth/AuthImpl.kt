@@ -3,8 +3,11 @@ package com.chisw.auth
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import javax.inject.Inject
+import javax.inject.Singleton
 
-object AuthImpl : Auth {
+@Singleton
+class AuthImpl @Inject constructor() : Auth {
 
     private val state = MutableStateFlow(false)
 
@@ -17,5 +20,4 @@ object AuthImpl : Auth {
     override suspend fun logOut() {
         state.value = false
     }
-
 }

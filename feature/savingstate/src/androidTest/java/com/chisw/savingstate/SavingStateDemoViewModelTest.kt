@@ -58,6 +58,8 @@ class SavingStateDemoViewModelTest {
             saveProfileInteractor,
             observeProfileInteractor,
             logger,
+            mockk(),
+            mockk(),
         )
     }
 

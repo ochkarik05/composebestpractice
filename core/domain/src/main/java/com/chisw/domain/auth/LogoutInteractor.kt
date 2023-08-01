@@ -1,13 +1,11 @@
 package com.chisw.domain.auth
 
 import com.chisw.auth.Auth
-import com.chisw.auth.AuthImpl
+import javax.inject.Inject
 
-class LogoutInteractor(
+class LogoutInteractor @Inject constructor(
     private val auth: Auth,
 ) {
-
-    constructor() : this(AuthImpl)
 
     suspend operator fun invoke() {
         auth.logOut()

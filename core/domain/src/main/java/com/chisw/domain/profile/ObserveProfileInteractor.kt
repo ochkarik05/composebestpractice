@@ -1,13 +1,11 @@
 package com.chisw.domain.profile
 
 import com.chisw.data.repository.ProfileRepository
-import com.chisw.data.repository.ProfileRepositoryImpl
+import javax.inject.Inject
 
-@Suppress("unused")
-class ObserveProfileInteractor(
+class ObserveProfileInteractor @Inject constructor(
     private val repository: ProfileRepository,
 ) {
-    constructor() : this(ProfileRepositoryImpl)
 
     operator fun invoke() = repository.observeProfile()
 }

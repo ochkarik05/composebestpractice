@@ -2,11 +2,17 @@ package com.chisw.composesample
 
 import android.app.Application
 import com.chisw.common.AppLogger
-import com.chisw.common.defaultLogger
+import dagger.hilt.android.HiltAndroidApp
+import javax.inject.Inject
 
+@HiltAndroidApp
 class App : Application() {
+
+    @Inject
+    lateinit var logger: AppLogger
+
     override fun onCreate() {
         super.onCreate()
-        (defaultLogger as? AppLogger)?.setup(true)
+        logger.setup(true)
     }
 }

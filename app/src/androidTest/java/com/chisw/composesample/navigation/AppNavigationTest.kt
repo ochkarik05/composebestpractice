@@ -1,6 +1,6 @@
 package com.chisw.composesample.navigation
 
-import androidx.activity.ComponentActivity
+import androidx.activity.compose.setContent
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.junit4.AndroidComposeTestRule
@@ -12,6 +12,7 @@ import androidx.navigation.compose.ComposeNavigator
 import androidx.navigation.testing.TestNavHostController
 import com.chisw.auth.Auth
 import com.chisw.auth.AuthScreenState
+import com.chisw.composesample.MainActivity
 import com.google.common.truth.Truth.assertThat
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -31,7 +32,7 @@ import com.chisw.savingstate.R as SavingStateR
 class AppNavigationTest {
 
     @get:Rule
-    val composeTestRule = createAndroidComposeRule<ComponentActivity>()
+    val composeTestRule = createAndroidComposeRule<MainActivity>()
     private lateinit var navController: TestNavHostController
     private lateinit var auth: Auth
     private val scope = TestScope()
@@ -62,7 +63,7 @@ class AppNavigationTest {
                 state.value = false
             }
         }
-        composeTestRule.setContent {
+        composeTestRule.activity.setContent {
             navController = TestNavHostController(LocalContext.current)
             navController.navigatorProvider.addNavigator(ComposeNavigator())
             AppNavigation(
@@ -70,7 +71,7 @@ class AppNavigationTest {
                     auth = auth,
                     scope = scope,
                     navController = navController,
-                )
+                ),
             )
         }
     }
