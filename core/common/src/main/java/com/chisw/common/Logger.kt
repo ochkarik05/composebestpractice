@@ -2,9 +2,10 @@ package com.chisw.common
 
 import android.annotation.SuppressLint
 import android.util.Log
+import com.chisw.common.di.Singleton
+import me.tatarka.inject.annotations.Inject
 import timber.log.Timber
 import java.util.regex.Pattern
-import javax.inject.Inject
 
 @Suppress("TooManyFunctions")
 interface Logger {
@@ -65,7 +66,9 @@ interface Logger {
 }
 
 @Suppress("TooManyFunctions")
-class AppLogger @Inject constructor() : Logger {
+@Inject
+@Singleton
+class AppLogger : Logger {
 
     fun setup(debugMode: Boolean) {
         if (debugMode) {

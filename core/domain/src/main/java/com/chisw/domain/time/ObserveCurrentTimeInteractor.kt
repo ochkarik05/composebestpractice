@@ -4,8 +4,8 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.map
+import me.tatarka.inject.annotations.Inject
 import java.util.concurrent.TimeUnit
-import javax.inject.Inject
 
 private const val TIME_INTERVAL_SEC = 1L
 
@@ -13,7 +13,8 @@ fun interface CurrentTimeFormatter {
     fun formatTime(ms: Long): String
 }
 
-class ObserveCurrentTimeInteractor @Inject constructor() {
+@Inject
+class ObserveCurrentTimeInteractor {
 
     class Params(
         val formatter: CurrentTimeFormatter,

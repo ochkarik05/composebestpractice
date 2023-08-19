@@ -10,10 +10,11 @@ import com.chisw.domain.utils.InvokeSuccess
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.withContext
+import me.tatarka.inject.annotations.Inject
 import java.io.IOException
-import javax.inject.Inject
 
-class SaveProfileInteractor @Inject constructor(
+@Inject
+class SaveProfileInteractor(
     private val repository: ProfileRepository,
     private val dispatchers: AppCoroutineDispatchers,
 ) {

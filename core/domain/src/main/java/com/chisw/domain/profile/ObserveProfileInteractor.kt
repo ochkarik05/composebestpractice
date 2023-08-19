@@ -1,9 +1,10 @@
 package com.chisw.domain.profile
 
 import com.chisw.data.repository.ProfileRepository
-import javax.inject.Inject
+import me.tatarka.inject.annotations.Inject
 
-class ObserveProfileInteractor @Inject constructor(
+@Inject
+class ObserveProfileInteractor(
     private val repository: ProfileRepository,
 ) {
 

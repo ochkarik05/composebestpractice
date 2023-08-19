@@ -1,7 +1,7 @@
 @Suppress("DSL_SCOPE_VIOLATION")
 plugins {
     id("shineapp.android.library")
-    id("shineapp.android.hilt")
+    id("shineapp.android.kotlin.inject")
 }
 
 android {
@@ -19,6 +19,14 @@ android {
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
         }
     }
+    packaging {
+        resources.excludes.addAll(
+            listOf(
+                "META-INF/LICENSE.md",
+                "META-INF/LICENSE-notice.md",
+            ),
+        )
+    }
 }
 
 dependencies {
@@ -29,10 +37,7 @@ dependencies {
 
     implementation(libs.appcompat)
     implementation(libs.core.ktx)
-    implementation(libs.hilt.android)
     implementation(libs.material)
-
-    kapt(libs.hilt.compiler)
 
     testImplementation(libs.junit)
     testImplementation(libs.mockk)

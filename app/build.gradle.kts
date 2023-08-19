@@ -1,7 +1,7 @@
 @Suppress("DSL_SCOPE_VIOLATION")
 plugins {
     id("shineapp.android.application")
-    id("shineapp.android.hilt")
+    id("shineapp.android.kotlin.inject")
     id("shineapp.android.app.compose")
 }
 
@@ -25,11 +25,11 @@ android {
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
         }
     }
-
     packaging {
         resources.excludes += setOf(
             // Exclude AndroidX version files
             "META-INF/*.version",
+            "META-INF/LICENSE.md",
             // Exclude consumer proguard files
             "META-INF/proguard/*",
             // Exclude the Firebase/Fabric/other random properties files
@@ -40,21 +40,19 @@ android {
     }
 }
 
-kapt {
-    correctErrorTypes = true
-}
-
 dependencies {
 
+    implementation(project(":feature:savingstate"))
     implementation(project(":core:auth"))
     implementation(project(":core:designsystem"))
     implementation(project(":core:ui"))
+    implementation(project(":core:data"))
+    implementation(project(":core:domain"))
     implementation(project(":core:common"))
     implementation(project(":feature:animation"))
     implementation(project(":feature:auth"))
     implementation(project(":feature:layouts"))
     implementation(project(":feature:main"))
-    implementation(project(":feature:savingstate"))
 
     implementation(libs.androidx.navigation.compose)
 
