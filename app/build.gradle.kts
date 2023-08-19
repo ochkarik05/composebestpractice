@@ -1,19 +1,15 @@
 @Suppress("DSL_SCOPE_VIOLATION")
 plugins {
-    alias(libs.plugins.com.android.application)
-    alias(libs.plugins.hilt.android)
-    alias(libs.plugins.org.jetbrains.kotlin.android)
-    kotlin("kapt")
+    id("shineapp.android.application")
+    id("shineapp.android.hilt")
+    id("shineapp.android.app.compose")
 }
 
 android {
     namespace = "com.chisw.composesample"
-    compileSdk = 33
 
     defaultConfig {
         applicationId = "com.chisw.composesample"
-        minSdk = 28
-        targetSdk = 33
         versionCode = 3
         versionName = "0.0.$versionCode"
 
@@ -29,23 +25,18 @@ android {
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
         }
     }
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
-    }
-    kotlinOptions {
-        jvmTarget = "1.8"
-    }
-    buildFeatures {
-        compose = true
-    }
-    composeOptions {
-        kotlinCompilerExtensionVersion = libs.versions.kotlin.compiler.get()
-    }
+
     packaging {
-        resources {
-            excludes += "/META-INF/{AL2.0,LGPL2.1}"
-        }
+        resources.excludes += setOf(
+            // Exclude AndroidX version files
+            "META-INF/*.version",
+            // Exclude consumer proguard files
+            "META-INF/proguard/*",
+            // Exclude the Firebase/Fabric/other random properties files
+            "/*.properties",
+            "fabric/*.properties",
+            "META-INF/*.properties",
+        )
     }
 }
 
@@ -66,9 +57,6 @@ dependencies {
     implementation(project(":feature:savingstate"))
 
     implementation(libs.androidx.navigation.compose)
-    implementation(libs.hilt.android)
-
-    kapt(libs.hilt.android.compiler)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.navigation.testing)
@@ -76,7 +64,6 @@ dependencies {
     androidTestImplementation(libs.espresso.core)
     androidTestImplementation(libs.truth)
     androidTestImplementation(libs.ui.test.junit4)
-    androidTestImplementation(platform(libs.compose.bom))
 
     debugImplementation(libs.ui.tooling)
     debugImplementation(libs.ui.test.manifest)

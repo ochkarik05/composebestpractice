@@ -19,8 +19,8 @@ import com.chisw.designsystem.component.Themed3Preview
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun AnimationDemoScreen() {
-    val state: PagerState = rememberPagerState()
     val pages: List<AnimPages> = pages()
+    val state: PagerState = rememberPagerState { pages.size }
     Column(
         modifier = Modifier.padding(top = 16.dp),
         horizontalAlignment = Alignment.CenterHorizontally,

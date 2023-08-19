@@ -6,21 +6,30 @@ interfaces.
 
 ## Dependency Injection
 
-The project tires to follow best practices of using
-DI [ Dependency Injection ](https://en.wikipedia.org/wiki/Dependency_injection),
-IoC [ Inversion of control ](https://en.wikipedia.org/wiki/Inversion_of_control),
-DIP [ Dependency Inversion Principle ](https://en.wikipedia.org/wiki/Dependency_inversion_principle)
-There is a good explanation what all of these definitions are, how they are connected and how they differ from each
-other:
-https://stackoverflow.com/a/46745172
+This section delves into the adoption of best practices related to Dependency Injection (DI), Inversion of Control (
+IoC), and the Dependency Inversion Principle (DIP). For comprehensive explanations and their interconnections, refer to
+the following resources:
 
-In the project [Hilt](https://developer.android.com/training/dependency-injection/hilt-android)  is used as a DI
-framework.
-The decision to choose Hilt was made mainly because it uses static compile-time approach to generate the code.
+- [Dependency Injection](https://en.wikipedia.org/wiki/Dependency_injection)
+- [Inversion of Control](https://en.wikipedia.org/wiki/Inversion_of_control)
+- [Dependency Inversion Principle](https://en.wikipedia.org/wiki/Dependency_inversion_principle)
 
-[ See this PR ]( https://github.com/ochkarik05/composebestpractice/pull/1) to understand how Hilt reduces boilerplate
-code.
-Take a look how SavingStateDemoViewModel were created before this PR using a custom factory.
+A concise overview of these concepts can be found in this StackOverflow
+post: [Link](https://stackoverflow.com/a/46745172).
+
+In this project's initial phase, the Dependency Injection framework employed
+is [Hilt](https://developer.android.com/training/dependency-injection/hilt-android). Hilt was chosen due to its use of a
+static compile-time approach for code generation. To observe how Hilt effectively reduces boilerplate code, check out
+the changes demonstrated in [this pull request](https://github.com/ochkarik05/composebestpractice/pull/1). The PR
+illustrates the enhancements in code clarity and structure, as exemplified by the transformation of
+the `SavingStateDemoViewModel` using a custom factory before the PR's implementation.
+
+However, the current trend in software development is leaning towards adopting platform-independent Kotlin libraries, as
+they facilitate Kotlin multiplatform capabilities. As a suitable alternative to Hilt for platform-independent scenarios,
+the [kotlin-inject](https://github.com/evant/kotlin-inject) framework was selected **(coming soon)**.
+
+This strategic choice takes into account the broader compatibility and adaptability goals of projects embracing Kotlin's
+multiplatform functionalities.
 
 ## Theming
 
