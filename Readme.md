@@ -14,13 +14,20 @@ There is a good explanation what all of these definitions are, how they are conn
 other:
 https://stackoverflow.com/a/46745172
 
-In the project [Hilt](https://developer.android.com/training/dependency-injection/hilt-android)  is used as a DI
+In the project as a first iteration [Hilt](https://developer.android.com/training/dependency-injection/hilt-android)  is
+used as a DI
 framework.
 The decision to choose Hilt was made mainly because it uses static compile-time approach to generate the code.
 
 [ See this PR ]( https://github.com/ochkarik05/composebestpractice/pull/1) to understand how Hilt reduces boilerplate
 code.
 Take a look how SavingStateDemoViewModel were created before this PR using a custom factory.
+
+But nowadays more and more projects are moving towards platform-independent kotlin libraries as they support kotlin
+multiplatform
+
+So, as a platform-independent alternative for hilt, the [ kotlin-inject ](https://github.com/evant/kotlin-inject) was
+chosen.
 
 ## Theming
 

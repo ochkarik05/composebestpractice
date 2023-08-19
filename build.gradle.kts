@@ -5,7 +5,7 @@ plugins {
     alias(libs.plugins.com.android.library) apply false
     alias(libs.plugins.detekt)
     alias(libs.plugins.hilt.android) apply false
-    alias(libs.plugins.org.jetbrains.kotlin.android) apply false
+    alias(libs.plugins.kotlin.android) apply false
 }
 dependencies {
     detektPlugins(libs.detekt.formatting)

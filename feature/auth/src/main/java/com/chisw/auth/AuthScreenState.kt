@@ -17,7 +17,7 @@ fun rememberAuthScreenState(
     auth: Auth,
     scope: CoroutineScope = rememberCoroutineScope(),
     navController: NavHostController = rememberNavController(),
-) = remember(auth, scope, navController) {
+): AuthScreenState = remember(auth, scope, navController) {
     AuthScreenState(auth = auth, scope = scope, navController = navController)
 }
 
