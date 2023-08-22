@@ -13,18 +13,16 @@ import com.chisw.domain.profile.SaveProfileInteractor
 import com.chisw.domain.time.ObserveCurrentTimeInteractor
 import com.chisw.domain.utils.InvokeError
 import com.chisw.domain.utils.Loader
-import com.chisw.savingstate.di.DATE_FORMATTER
-import com.chisw.savingstate.di.TIME_FORMATTER
-import dagger.hilt.android.lifecycle.HiltViewModel
+import com.chisw.savingstate.di.DateFormatter
+import com.chisw.savingstate.di.TimeFormatter
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
-import java.text.SimpleDateFormat
+import me.tatarka.inject.annotations.Assisted
+import me.tatarka.inject.annotations.Inject
 import java.util.Date
-import javax.inject.Inject
-import javax.inject.Named
 
 const val INITIAL_STEP = 0
 
@@ -49,17 +47,17 @@ data class SavingStateDemoViewState(
 
 internal const val CURRENT_STEP = "currentStep"
 
-@HiltViewModel
 @Suppress("LongParameterList")
-class SavingStateDemoViewModel @Inject constructor(
-    private val savedStateHandle: SavedStateHandle,
+@Inject
+class SavingStateDemoViewModel(
+    @Assisted private val savedStateHandle: SavedStateHandle,
     currentTimeInteractor: ObserveCurrentTimeInteractor,
     logoutInteractor: LogoutInteractor,
     saveProfileInteractor: SaveProfileInteractor,
     observeProfileInteractor: ObserveProfileInteractor,
     logger: Logger,
-    @Named(DATE_FORMATTER) private val timeFormatter: SimpleDateFormat,
-    @Named(TIME_FORMATTER) private val dateFormatter: SimpleDateFormat,
+    private val timeFormatter: TimeFormatter,
+    private val dateFormatter: DateFormatter,
 ) : ViewModel() {
 
     private val loadingState by lazy { Loader(viewModelScope, logger) }

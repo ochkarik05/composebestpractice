@@ -3,11 +3,10 @@ package com.chisw.auth
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
-import javax.inject.Inject
-import javax.inject.Singleton
+import me.tatarka.inject.annotations.Inject
 
-@Singleton
-class AuthImpl @Inject constructor() : Auth {
+@Inject
+class AuthImpl : Auth {
 
     private val state = MutableStateFlow(false)
 

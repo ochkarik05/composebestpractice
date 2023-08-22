@@ -4,8 +4,8 @@ import com.chisw.data.model.Profile
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
+import me.tatarka.inject.annotations.Inject
 import java.io.IOException
-import javax.inject.Inject
 
 interface ProfileRepository {
     fun observeProfile(): Flow<Profile>
@@ -14,7 +14,8 @@ interface ProfileRepository {
 
 private const val DELAY = 5000L
 
-class ProfileRepositoryImpl @Inject constructor() : ProfileRepository {
+@Inject
+class ProfileRepositoryImpl : ProfileRepository {
     private val profileHolder: MutableStateFlow<Profile> = MutableStateFlow(Profile("", ""))
     override fun observeProfile(): Flow<Profile> {
         return profileHolder

@@ -50,9 +50,9 @@ gradlePlugin {
             id = "shineapp.android.library"
             implementationClass = "AndroidLibraryConventionPlugin"
         }
-        register("androidHilt") {
-            id = "shineapp.android.hilt"
-            implementationClass = "AndroidHiltConventionPlugin"
+        register("androidInject") {
+            id = "shineapp.android.kotlin.inject"
+            implementationClass = "AndroidKotlinInjectConventionPlugin"
         }
         register("androidApplicationCompose") {
             id = "shineapp.android.app.compose"

@@ -1,7 +1,7 @@
 @Suppress("DSL_SCOPE_VIOLATION")
 plugins {
     id("shineapp.android.library")
-    id("shineapp.android.hilt")
+    id("shineapp.android.kotlin.inject")
     id("shineapp.android.compose")
 }
 
@@ -18,6 +18,14 @@ android {
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
         }
     }
+    packaging {
+        resources.excludes.addAll(
+            listOf(
+                "META-INF/LICENSE.md",
+                "META-INF/LICENSE-notice.md",
+            ),
+        )
+    }
 }
 
 dependencies {
@@ -32,6 +40,7 @@ dependencies {
     api(libs.ui.graphics)
     api(libs.ui.tooling.preview)
     api(libs.androidx.navigation.compose)
+    api(libs.lifecycle.viewmodel.compose)
     api(platform(libs.compose.bom))
 
     androidTestImplementation(libs.androidx.test.ext.junit)
