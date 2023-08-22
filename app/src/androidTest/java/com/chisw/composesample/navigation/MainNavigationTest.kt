@@ -1,6 +1,7 @@
 package com.chisw.composesample.navigation
 
 import androidx.activity.compose.setContent
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.assertIsSelected
 import androidx.compose.ui.test.junit4.AndroidComposeTestRule
@@ -9,6 +10,9 @@ import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
 import com.chisw.animation.R
 import com.chisw.composesample.MainActivity
+import com.chisw.composesample.MainActivityComponent
+import com.chisw.composesample.create
+import com.chisw.di.LocalMainScreens
 import com.chisw.main.MainApp
 import kotlinx.coroutines.test.runTest
 import org.junit.Before
@@ -38,7 +42,10 @@ class MainNavigationTest {
     @Before
     fun setUp() {
         composeTestRule.activity.setContent {
-            MainApp()
+            val activityComponent = MainActivityComponent::class.create(composeTestRule.activity)
+            CompositionLocalProvider(LocalMainScreens provides activityComponent.screens) {
+                MainApp()
+            }
         }
     }
 
