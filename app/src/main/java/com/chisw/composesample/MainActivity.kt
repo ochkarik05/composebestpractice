@@ -6,7 +6,6 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.navigation.compose.rememberNavController
-import com.chisw.auth.Auth
 import com.chisw.auth.rememberAuthScreenState
 import com.chisw.common.di.ActivityScope
 import com.chisw.composesample.di.ActivityComponent
@@ -20,14 +19,10 @@ import me.tatarka.inject.annotations.Provides
 
 class MainActivity : ComponentActivity() {
 
-    lateinit var auth: Auth
-
-    lateinit var activityComponent: MainActivityComponent
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        activityComponent = MainActivityComponent::class.create(this)
-        auth = (application as App).auth
+        val activityComponent = MainActivityComponent::class.create(this)
+        val auth = (application as App).auth
         setContent {
             AppTheme {
                 CompositionLocalProvider(LocalMainScreens provides activityComponent.screens) {
