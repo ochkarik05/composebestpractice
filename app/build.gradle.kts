@@ -30,6 +30,7 @@ android {
             // Exclude AndroidX version files
             "META-INF/*.version",
             "META-INF/LICENSE.md",
+            "META-INF/LICENSE-notice.md",
             // Exclude consumer proguard files
             "META-INF/proguard/*",
             // Exclude the Firebase/Fabric/other random properties files
@@ -62,6 +63,7 @@ dependencies {
     androidTestImplementation(libs.espresso.core)
     androidTestImplementation(libs.truth)
     androidTestImplementation(libs.ui.test.junit4)
+    androidTestImplementation(libs.mockk)
 
     debugImplementation(libs.ui.tooling)
     debugImplementation(libs.ui.test.manifest)
