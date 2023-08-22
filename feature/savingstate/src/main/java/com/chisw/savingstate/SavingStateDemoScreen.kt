@@ -25,8 +25,9 @@ import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.chisw.composesample.di.viewModel
 import com.chisw.data.model.Profile
 import com.chisw.designsystem.component.ChiHeader
 import com.chisw.designsystem.component.Counter
@@ -34,13 +35,23 @@ import com.chisw.designsystem.component.DateTimeView
 import com.chisw.designsystem.component.ProfileView
 import com.chisw.designsystem.component.Themed3Preview
 import kotlinx.coroutines.launch
+import me.tatarka.inject.annotations.Assisted
+import me.tatarka.inject.annotations.Inject
 
 @VisibleForTesting
 const val SAVING_STATE_DEMO_SCREEN_TAG = "saving_state_demo_screen_tag"
 
+typealias SavingStateDemoScreen = @Composable (
+    onShowSnackBar: suspend (String, String, SnackbarDuration) -> Boolean,
+) -> Unit
+
+@Inject
 @Composable
-fun SavingStateDemoScreen(onShowSnackBar: suspend (String, String, SnackbarDuration) -> Boolean) {
-    val viewModel: SavingStateDemoViewModel = hiltViewModel()
+fun SavingStateDemoScreen(
+    viewModelFactory: (SavedStateHandle) -> SavingStateDemoViewModel,
+    @Assisted onShowSnackBar: suspend (String, String, SnackbarDuration) -> Boolean,
+) {
+    val viewModel: SavingStateDemoViewModel = viewModel(factory = viewModelFactory)
     SavingStateDemoScreen(viewModel, onShowSnackBar)
 }
 
@@ -88,11 +99,15 @@ fun SavingStateDemoScreen(
     }
 
     val onIncrement = remember(state.eventSink) {
-        { state.eventSink(SavingStateEvent.Increment) }
+        {
+            state.eventSink(SavingStateEvent.Increment)
+        }
     }
 
     val onDecrement = remember(state.eventSink) {
-        { state.eventSink(SavingStateEvent.Decrement) }
+        {
+            state.eventSink(SavingStateEvent.Decrement)
+        }
     }
 
     SavingStateDemoScreen(

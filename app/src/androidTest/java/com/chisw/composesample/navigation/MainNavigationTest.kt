@@ -10,6 +10,7 @@ import androidx.compose.ui.test.performClick
 import com.chisw.animation.R
 import com.chisw.composesample.MainActivity
 import com.chisw.main.MainApp
+import kotlinx.coroutines.test.runTest
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -68,13 +69,14 @@ class MainNavigationTest {
     }
 
     @Test
-    fun openLayouts_andPressBack_showsSavingStateScreen() {
+    fun openLayouts_andPressBack_showsSavingStateScreen() = runTest {
         with(composeTestRule) {
             onNodeWithText(customLayoutNavItem).performClick()
+            waitForIdle()
             composeTestRule.activityRule.scenario.onActivity { activity ->
                 activity.onBackPressedDispatcher.onBackPressed()
             }
-
+            waitForIdle()
             onNodeWithText(savingStateScreen).assertIsDisplayed()
         }
     }

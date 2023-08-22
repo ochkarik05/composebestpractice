@@ -5,6 +5,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import com.chisw.animation.navigation.animationDemoScreen
+import com.chisw.di.LocalMainScreens
 import com.chisw.layouts.navigation.customLayoutDemoScreen
 import com.chisw.main.MainScreenState
 import com.chisw.savingstate.navigation.savingStateDemoRoute
@@ -18,12 +19,14 @@ fun MainScreenNavHost(
     startDestination: String = savingStateDemoRoute,
 ) {
     val navController = appState.navController
+    val screens = LocalMainScreens.current
+
     NavHost(
         navController = navController,
         startDestination = startDestination,
         modifier = modifier,
     ) {
-        savingStateDemoScreen(onShowSnackBar)
+        savingStateDemoScreen { screens.savingStateDemoScreen(onShowSnackBar) }
         animationDemoScreen()
         customLayoutDemoScreen()
     }

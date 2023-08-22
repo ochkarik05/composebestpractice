@@ -1,17 +1,14 @@
 @Suppress("DSL_SCOPE_VIOLATION")
 plugins {
-    alias(libs.plugins.com.android.library)
-    alias(libs.plugins.hilt.android)
-    alias(libs.plugins.org.jetbrains.kotlin.android)
-    kotlin("kapt")
+    id("shineapp.android.library")
+    id("shineapp.android.kotlin.inject")
+    id("shineapp.android.compose")
 }
 
 android {
     namespace = "com.chisw.savingstate"
-    compileSdk = 33
 
     defaultConfig {
-        minSdk = 28
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
@@ -23,19 +20,7 @@ android {
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
         }
     }
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
-    }
-    kotlinOptions {
-        jvmTarget = "1.8"
-    }
-    buildFeatures {
-        compose = true
-    }
-    composeOptions {
-        kotlinCompilerExtensionVersion = libs.versions.kotlin.compiler.get()
-    }
+
     packaging {
         resources.excludes.addAll(
             listOf(
@@ -53,15 +38,11 @@ dependencies {
     implementation(project(":core:domain"))
     implementation(project(":core:data"))
     implementation(project(":core:common"))
-
-    implementation(libs.hilt.android)
-    implementation(libs.hilt.navigation.compose)
-
-    kapt(libs.hilt.android.compiler)
+    implementation(project(":core:auth"))
 
     androidTestImplementation(libs.androidx.test.ext.junit)
     androidTestImplementation(libs.androidx.navigation.testing)
-    androidTestImplementation(libs.espresso.core)
+//    androidTestImplementation(libs.espresso.core)
     androidTestImplementation(libs.ui.test.junit4)
     androidTestImplementation(platform(libs.compose.bom))
     androidTestImplementation(libs.truth)

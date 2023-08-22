@@ -35,7 +35,7 @@ half4 main(float2 fragCoord)  {
 fun AnimPager(
     modifier: Modifier = Modifier,
     pages: List<AnimPages> = pages(),
-    state: PagerState = rememberPagerState(),
+    state: PagerState = rememberPagerState { pages.size },
     pageContent: @Composable (AnimPages) -> Unit = {
         AnimPage(animPage = it)
     },
@@ -56,7 +56,6 @@ fun AnimPager(
     HorizontalPager(
         state = state,
         modifier = modifier,
-        pageCount = pages.size,
     ) {
         Card(
             Modifier

@@ -1,9 +1,10 @@
 package com.chisw.domain.auth
 
 import com.chisw.auth.Auth
-import javax.inject.Inject
+import me.tatarka.inject.annotations.Inject
 
-class LogoutInteractor @Inject constructor(
+@Inject
+class LogoutInteractor constructor(
     private val auth: Auth,
 ) {
 
