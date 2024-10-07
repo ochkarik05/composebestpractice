@@ -168,7 +168,7 @@ fun ProfileEditor(
         OutlinedTextField(
             enabled = enabled,
             value = profileState.firstName,
-            label = { Text(firstNameLabel) },
+            placeholder = { Text(firstNameLabel) },
             onValueChange = {
                 profileState.firstName = it
             },
